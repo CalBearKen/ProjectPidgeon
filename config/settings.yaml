@@ -1,0 +1,49 @@
+queue:
+  backend: redis # Options: memory, redis, kafka
+  redis:
+    host: redis
+    port: 6379
+    db: 0
+    stream_prefix: pidgeon
+    max_connections: 10
+  memory:
+    max_size: 10000  # Maximum messages per queue
+
+state:
+  backend: redis
+  redis:
+    host: redis
+    port: 6379
+    db: 1
+    key_prefix: pidgeon:state
+    ttl_seconds: 3600  # Default TTL for workflow state
+
+llm:
+  default_provider: openai
+  cache_enabled: true
+  cache_ttl_seconds: 3600
+  providers:
+    openai:
+      api_key: ${OPENAI_API_KEY}
+      model: gpt-4
+      temperature: 0.7
+      max_tokens: 2000
+    anthropic:
+      api_key: ${ANTHROPIC_API_KEY}
+      model: claude-3-sonnet-20240229
+      temperature: 0.7
+      max_tokens: 2000
+
+monitoring:
+  enabled: true
+  metrics_interval_seconds: 10
+  log_level: INFO
+
+supervisor:
+  monitoring_interval_seconds: 5
+  anomaly_detection_enabled: true
+  circuit_breaker_enabled: true
+  circuit_breaker_threshold: 5  # Failures before opening circuit
+  circuit_breaker_timeout_seconds: 60
+
+

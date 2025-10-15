@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pidgeon-protocol"
+version = "0.1.0"
+description = "Queue-centric, event-driven communication framework for multi-agent AI systems"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Jiarui Li", email = "jiarui@example.com"}
+]
+keywords = ["ai", "agents", "queue", "protocol", "messaging", "mcp", "orchestration"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "redis[asyncio]>=5.0.0",
+    "pydantic>=2.5.0",
+    "orjson>=3.9.0",
+    "pyyaml>=6.0",
+    "openai>=1.0.0",
+    "anthropic>=0.18.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+]
+
+[project.scripts]
+pidgeon-planner = "pidgeon.planner.__main__:main"
+pidgeon-interpreter = "pidgeon.interpreter.__main__:main"
+pidgeon-supervisor = "pidgeon.supervisor.__main__:main"
+pidgeon-agent = "pidgeon.agents.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pidgeon*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+

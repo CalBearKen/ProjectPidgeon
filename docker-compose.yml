@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  # Redis for message queues and caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # LLM Planner
+  planner:
+    build: .
+    command: python -m pidgeon.planner
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./config:/app/config:ro
+      - ./pidgeon:/app/pidgeon
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Interpreter
+  interpreter:
+    build: .
+    command: python -m pidgeon.interpreter
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./config:/app/config:ro
+      - ./pidgeon:/app/pidgeon
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Supervisor
+  supervisor:
+    build: .
+    command: python -m pidgeon.supervisor
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./config:/app/config:ro
+      - ./pidgeon:/app/pidgeon
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Extraction Agent
+  extraction-agent:
+    build: .
+    command: python -m pidgeon.agents --type extraction --id extraction-001
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./config:/app/config:ro
+      - ./pidgeon:/app/pidgeon
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    deploy:
+      replicas: 2  # Run 2 instances for load balancing
+
+  # Summarization Agent
+  summarization-agent:
+    build: .
+    command: python -m pidgeon.agents --type summarization --id summarization-001
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./config:/app/config:ro
+      - ./pidgeon:/app/pidgeon
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    deploy:
+      replicas: 2  # Run 2 instances for load balancing
+
+  # Analysis Agent
+  analysis-agent:
+    build: .
+    command: python -m pidgeon.agents --type analysis --id analysis-001
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./config:/app/config:ro
+      - ./pidgeon:/app/pidgeon
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+

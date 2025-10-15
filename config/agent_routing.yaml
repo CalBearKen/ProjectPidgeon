@@ -1,0 +1,44 @@
+task_types:
+  EXTRACTION:
+    queue: structured_task.extraction
+    timeout_ms: 30000
+    max_retries: 3
+    priority: 5
+    description: Extract text or data from documents
+    
+  SUMMARIZATION:
+    queue: structured_task.summarization
+    timeout_ms: 15000
+    max_retries: 2
+    priority: 5
+    description: Summarize text content
+    
+  ANALYSIS:
+    queue: structured_task.analysis
+    timeout_ms: 45000
+    max_retries: 3
+    priority: 4
+    description: Analyze data and generate insights
+    
+  FACT_CHECK:
+    queue: structured_task.fact_check
+    timeout_ms: 30000
+    max_retries: 2
+    priority: 6
+    description: Verify facts and claims
+    
+  CUSTOM:
+    queue: structured_task.custom
+    timeout_ms: 60000
+    max_retries: 3
+    priority: 3
+    description: Custom domain-specific tasks
+
+# Queue names for core infrastructure
+queues:
+  input: input
+  task: task
+  result: result
+  dlq: dead_letter
+
+

@@ -1,0 +1,5 @@
+[console_scripts]
+pidgeon-agent = pidgeon.agents.__main__:main
+pidgeon-interpreter = pidgeon.interpreter.__main__:main
+pidgeon-planner = pidgeon.planner.__main__:main
+pidgeon-supervisor = pidgeon.supervisor.__main__:main
