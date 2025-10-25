@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use Pidgeon Protocol in your research or project, please cite it as below."
+title: "Pidgeon Protocol"
+abstract: "Queue-centric, event-driven communication framework for multi-agent AI systems. The Pidgeon Protocol replaces brittle, synchronous agent-to-agent calls with asynchronous message queues, enabling fault isolation, independent scaling, and comprehensive observability for AI agent coordination."
+type: software
+authors:
+  - family-names: Li
+    given-names: Ken or Jiarui (use the one you prefer)
+    email: ken.li.berkeley@gmail.com
+repository-code: "https://github.com/CalBearKen/ProjectPidgeon"
+url: "https://github.com/CalBearKen/ProjectPidgeon"
+keywords:
+  - ai
+  - agents
+  - queue
+  - protocol
+  - messaging
+  - mcp
+  - orchestration
+  - multi-agent systems
+  - asynchronous messaging
+  - event-driven architecture
+license: MIT
+version: 0.1.0
+date-released: 2025-10-24
+
