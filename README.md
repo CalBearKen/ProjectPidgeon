@@ -70,11 +70,6 @@ The Pidgeon Protocol implements a message-queue-based coordination layer that al
 
 ### Install from Source
 
-```bash
-git clone https://github.com/yourusername/pidgeon-protocol.git
-cd pidgeon-protocol
-pip install -e .
-```
 
 ### Install with Development Dependencies
 
@@ -420,4 +415,5 @@ If you use Pidgeon Protocol in your research, please cite:
 ---
 
 **Built with ❤️ for the open AI ecosystem**
+
 
