@@ -35,15 +35,27 @@ The Pidgeon Protocol implements a message-queue-based coordination layer that al
                         │   Result    │     ┌─────────────────┐
                         │   Queue     │◀────│ Structured Task │
                         └─────────────┘     │     Queues      │
-                                            └─────────────────┘
-                                                     │
-                                                     ▼
-                                            ┌─────────────────┐
-                                            │  Agent Pool     │
-                                            │  - Extraction   │
-                                            │  - Summarization│
+                              ▲             └─────────────────┘
+                              │                      │
+                              │                      ▼
+                              │             ┌─────────────────┐
+                              │             │  Agent Pool     │
+                              │             │  - Extraction   │
+                              └─────────────│  - Summarization│
                                             │  - Analysis     │
                                             └─────────────────┘
+                                                     
+                        ┌─────────────────────────────────────┐
+                        │          Supervisor                 │
+                        │  (monitors all queues & agents)     │
+                        └─────────────────────────────────────┘
+                                  │           │
+                          ┌───────┴───────┐   │
+                          ▼               ▼   ▼
+                   ┌──────────────┐  ┌─────────────┐
+                   │ Dead Letter  │  │  Control    │
+                   │    Queue     │  │   Queue     │
+                   └──────────────┘  └─────────────┘
 ```
 
 ### Core Components
@@ -70,6 +82,11 @@ The Pidgeon Protocol implements a message-queue-based coordination layer that al
 
 ### Install from Source
 
+```bash
+git clone https://github.com/CalBearKen/pidgeon-protocol.git
+cd pidgeon-protocol
+pip install -e .
+```
 
 ### Install with Development Dependencies
 
@@ -408,12 +425,9 @@ If you use Pidgeon Protocol in your research, please cite:
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/pidgeon-protocol/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/pidgeon-protocol/discussions)
-- **Email**: support@pidgeonprotocol.org
-
+- **Issues**: [GitHub Issues](https://github.com/CalBearKen/pidgeon-protocol/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/CalBearKen/pidgeon-protocol/discussions)
 ---
 
-**Built with ❤️ for the open AI ecosystem**
-
+**I solumnly swear that I am up to no good.**
 
