@@ -110,16 +110,37 @@ async def main():
     logger.info("="*60)
     logger.info("Pidgeon Protocol - Document Analysis Pipeline Demo")
     logger.info("="*60)
+    logger.info("")
+    logger.info("IMPORTANT: This script runs OUTSIDE Docker and connects to")
+    logger.info("Docker containers via localhost:6379. Make sure you have:")
+    logger.info("1. Docker containers running: docker-compose up")
+    logger.info("2. Redis accessible on localhost:6379")
+    logger.info("")
     
     # Load configuration
     config = Config()
     logger.info(f"Queue backend: {config.queue_backend}")
     
+    # Override Redis host for external connections to Docker
+    # When running outside Docker, we need to connect to localhost:6379
+    # instead of the Docker service name 'redis'
+    if config.queue_backend == "redis":
+        # Override the Redis host to localhost for external connections
+        config._settings['queue']['redis']['host'] = 'localhost'
+        logger.info("Overriding Redis host to 'localhost' for external connection to Docker")
+    
     # Create queue factory
     queue_factory = QueueFactory(config)
     
     # Create input queue
-    input_queue = await queue_factory.create_queue("input")
+    try:
+        input_queue = await queue_factory.create_queue("input")
+        logger.info("Successfully connected to Redis and created input queue")
+    except Exception as e:
+        logger.error(f"Failed to connect to Redis: {e}")
+        logger.error("Make sure Docker containers are running with: docker-compose up")
+        logger.error("And that Redis is accessible on localhost:6379")
+        return
     
     # Import sample data
     import sys

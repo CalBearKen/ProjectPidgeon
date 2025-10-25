@@ -9,16 +9,40 @@ Get started with the Pidgeon Protocol in 5 minutes!
 
 ## Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/pidgeon-protocol.git
-cd pidgeon-protocol
+### Step 1: Create and Activate Virtual Environment
 
-# Install dependencies
-pip install -e .
+**Windows PowerShell:**
+```powershell
+# Create virtual environment
+python -m venv venv
+
+# Activate it
+.\venv\Scripts\Activate.ps1
+
+# Upgrade pip and setuptools
+python -m pip install --upgrade pip setuptools wheel
+```
+
+**Linux/Mac:**
+```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate it
+source venv/bin/activate
+
+# Upgrade pip and setuptools
+python -m pip install --upgrade pip setuptools wheel
+```
+
+### Step 2: Install Project Dependencies
+
+```bash
+# Install the project in editable mode (includes all dependencies)
+python -m pip install -e .
 
 # Copy and configure environment
-cp .env.example .env
+cp env.template .env
 ```
 
 Edit `.env` and add your API key:
@@ -27,6 +51,38 @@ OPENAI_API_KEY=your_key_here
 ```
 
 ## Run Your First Workflow
+
+### 🐳 Recommended: Docker (Easiest!)
+
+**3 steps to get everything running:**
+
+```bash
+# 1. Create environment file
+cp env.template .env
+# Edit .env and add your OPENAI_API_KEY
+
+# 2. Start everything with one command!
+docker-compose up -d
+
+# 3. Submit a test request
+docker-compose exec planner python examples/document_pipeline/run_demo.py
+
+# View logs
+docker-compose logs -f
+
+# Stop when done
+docker-compose down
+```
+
+**Windows PowerShell:**
+```powershell
+# Even easier - automated script!
+.\docker-start.ps1
+```
+
+See [DOCKER_GUIDE.md](DOCKER_GUIDE.md) for details.
+
+---
 
 ### Option 1: In-Memory Mode (No Redis Required)
 
