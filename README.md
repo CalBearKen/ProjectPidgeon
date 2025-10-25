@@ -1,4 +1,3 @@
-# Pidgeon Protocol
 
 **Queue-centric, event-driven communication framework for multi-agent AI systems.**
 
@@ -7,6 +6,11 @@ The Pidgeon Protocol replaces brittle, synchronous agent-to-agent calls with asy
 ## Overview
 
 The Pidgeon Protocol implements a message-queue-based coordination layer that allows AI agents across vendors, models, and frameworks to cooperate seamlessly, securely, and at scale. By decoupling intelligence from infrastructure, it establishes the foundation for an open coordination layer.
+
+- **Documentation**: [docs/](docs/)
+- **Design Documents**: [design.md](design.md), [PidgeonProtocol.md](PidgeonProtocol.md)
+- **Academic Paper**: [queue_paper.md](queue_paper.md)
+- **Requirements**: [requirements.md](requirements.md)
 
 ### Key Features
 
@@ -418,10 +422,7 @@ If you use Pidgeon Protocol in your research, please cite:
 
 ## Links
 
-- **Documentation**: [docs/](docs/)
-- **Design Documents**: [design.md](design.md), [PidgeonProtocol.md](PidgeonProtocol.md)
-- **Academic Paper**: [queue_paper.md](queue_paper.md)
-- **Requirements**: [requirements.md](requirements.md)
+
 
 ## Support
 
