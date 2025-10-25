@@ -17,6 +17,15 @@ The Pidgeon Protocol implements a message-queue-based coordination layer that al
 - **Protocol Agnostic** - Supports MCP, A2A, and ACP protocols
 - **Queue Backend Flexibility** - In-memory for dev, Redis/Kafka for production
 
+
+## Links
+
+- **Documentation**: [docs/](docs/)
+- **Design Documents**: [design.md](design.md), [PidgeonProtocol.md](PidgeonProtocol.md)
+- **Academic Paper**: [queue_paper.md](queue_paper.md)
+- **Requirements**: [requirements.md](requirements.md)
+
+
 ## Architecture
 
 ### Components
@@ -416,12 +425,6 @@ If you use Pidgeon Protocol in your research, please cite:
 - [ ] Multi-language SDKs (Go, TypeScript, Java)
 - [ ] Enterprise features (encryption, federation)
 
-## Links
-
-- **Documentation**: [docs/](docs/)
-- **Design Documents**: [design.md](design.md), [PidgeonProtocol.md](PidgeonProtocol.md)
-- **Academic Paper**: [queue_paper.md](queue_paper.md)
-- **Requirements**: [requirements.md](requirements.md)
 
 ## Support
 
@@ -430,4 +433,5 @@ If you use Pidgeon Protocol in your research, please cite:
 ---
 
 **I solumnly swear that I am up to no good.**
+
 
