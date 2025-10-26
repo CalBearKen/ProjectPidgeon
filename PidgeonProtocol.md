@@ -1,8 +1,8 @@
-# Pidgeon Protocol (飞鸽传书): Emerging AI-to-AI Communication Framework
+# Pidgeon Protocol (): Emerging AI-to-AI Communication Framework
 
 ## 1. Executive Summary
 
-**Pidgeon Protocol (飞鸽传书)** is an emerging communication framework designed to become the foundational protocol for autonomous and collaborative AI systems. It replaces brittle, synchronous agent-to-agent links with a fault-tolerant, message-queue-based coordination layer. This enables AI agents—across vendors, models, and frameworks—to cooperate seamlessly, securely, and at scale.
+**Pidgeon Protocol ()** is an emerging communication framework designed to become the foundational protocol for autonomous and collaborative AI systems. It replaces brittle, synchronous agent-to-agent links with a fault-tolerant, message-queue-based coordination layer. This enables AI agents—across vendors, models, and frameworks—to cooperate seamlessly, securely, and at scale.
 
 Today’s multi-agent systems depend on direct API calls or proprietary orchestration stacks. When one component fails, entire workflows stall. The **Pidgeon Protocol** abstracts coordination into asynchronous message exchanges, ensuring reliability and interoperability across heterogeneous AI environments. This approach extends beyond the Model Context Protocol (MCP) to support a broader AI-to-AI communication ecosystem.
 
