@@ -3,6 +3,8 @@
 
 The Pidgeon Protocol replaces brittle, synchronous agent-to-agent calls with asynchronous message queues, enabling fault isolation, independent scaling, and comprehensive observability for AI agent coordination.
 
+###THIS FRAMEWORK HAS NOT BEEN PRODUCTION TESTED, FOR TESTING AND DEVELOPMENT ONLY
+
 ## Overview
 
 The Pidgeon Protocol implements a message-queue-based coordination layer that allows AI agents across vendors, models, and frameworks to cooperate seamlessly, securely, and at scale. By decoupling intelligence from infrastructure, it establishes the foundation for an open coordination layer.
@@ -430,6 +432,7 @@ If you use Pidgeon Protocol in your research, please cite:
 ---
 
 **I solumnly swear that I am up to no good.**
+
 
 
 
